@@ -7,7 +7,8 @@ public class Bilde extends Tekst {
 	String url;
 	
 	public Bilde(int id, String bruker, String dato, String tekst, String url) {
-		this(id, bruker, dato, 0, tekst, url);
+		super(id, bruker, dato, tekst);
+		this.url = url;
 	}
 
 	public Bilde(int id, String bruker, String dato, int likes, String tekst, String url) {
@@ -25,14 +26,22 @@ public class Bilde extends Tekst {
 
 	@Override
 	public String toString() {
-		return super.toString() + url + "\n";
-
+		String s;
+		
+		s = "BILDE\n" + getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n" + getTekst() + "\n"
+				+ getUrl() + "\n";
+		
+		return s;
 	}
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
+		String s;
+		s = 
+		"\t\t<h2>" + getBruker() + "@" + getDato() + " [" + getLikes() + "]" + "<h2>\n" +
+		"\t\t<p>" + super.getTekst() + "<p>\n" + 
+		"\t\t<iframe src=" + getUrl() + " height=600 width=800></iframe><hr>\n";	
 		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return s;			
 	}
 }

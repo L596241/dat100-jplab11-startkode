@@ -5,14 +5,15 @@ import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Tekst extends Innlegg {
 
-	private String tekst;
+	String tekst;
 	
 	public Tekst () {
 		
 	}
 	
 	public Tekst(int id, String bruker, String dato, String tekst) {
-		this(id, bruker, dato, 0, tekst);
+		super(id, bruker, dato);
+		this.tekst = tekst;
 	}
 	
 	public Tekst(int id, String bruker, String dato, int likes, String tekst) {
@@ -22,7 +23,6 @@ public class Tekst extends Innlegg {
 	
 	public String getTekst() {
 		return tekst;
-
 	}
 
 	public void setTekst(String tekst) {
@@ -31,17 +31,22 @@ public class Tekst extends Innlegg {
 
 	@Override
 	public String toString() {
-		String str;
-		str = super.toString();
-		str = "TEKST" + "\n" + str + tekst + "\n";
-		return str;
-
+		String s;
+		
+		
+		s = "TEKST\n" + getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n" + getTekst() + "\n";
+		
+		return s;
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-			
-		throw new UnsupportedOperationException(TODO.method());
-				
+		String s;
+		s = 
+		"\t\t<h2>" + getBruker() + "@" + getDato() + " [" + getLikes() + "]" + "<h2>\n" +
+		"\t\t<p>" + tekst + "<p>\n" +
+		"\t\t<hr>\n";
+		
+		return s;				
 	}
 }
